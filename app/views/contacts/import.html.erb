@@ -1,0 +1,45 @@
+<%= flash[:notice] %>
+<table>
+	<thead>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Phone Number</th>
+		<th>Address</th>
+		<th>City</th>
+    <th>Province</th>
+    <th>Country_name</th>
+    <th>Postcode</th>
+    <th>Date_added</th>
+    <th>How_did_you_hear_about_us</th>
+    <th>What_is_your_budget</th>
+    <th>What_is_your_favourite_color</th>
+     
+	</thead>
+	<tbody>
+		<% @contacts.each do |contact| %>
+			<tr>
+				<td><%= contact.first_name %></td>
+				<td><%= contact.last_name %></td>
+				<td><%= contact.email %></td>
+				<td><%= contact.phone %></td>
+        <td><%= contact.address_line_1 %></td>
+        <td><%= contact.city %></td>
+        <td><%= contact.province %></td>
+        <td><%= contact.country_name %></td>
+        <td><%= contact.postcode %></td>
+        <td><%= contact.date_added %></td>
+        <td><%= contact.how_did_you_hear_about_us %></td>
+        <td><%= contact.what_is_your_budget %></td>
+        <td><%= contact.what_is_your_favourite_color %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<div>
+	<h4> Import that data! </h4>
+		<%= form_tag import_contacts_path, multipart: true do %>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Import CSV" %>
+		<% end %> 
+</div> 
