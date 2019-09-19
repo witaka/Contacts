@@ -1,11 +1,17 @@
 class Contact < ApplicationRecord
+	
+	has_many :phones, dependent: :destroy
 
 	require 'csv'
-	# validates :first_name, :last_name, :email, :phone, :address_line_1, :city, presence: true
 
 	def self.import(file)
-		CSV.foreach(file.path, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
-				Contact.create! row.to_hash
-		end
+		CSV.foreach(file.path, { headers: true}) do |row|
+				@contact = Contact.create! row.to_hash.except!("phone")
+				@phone = Phone.new(number: row["phone"])
+				@phone.contact = @contact
+				@phone.save
+			end
   end
 end
+
+
