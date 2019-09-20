@@ -25,16 +25,10 @@ module Contacts
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'localhost:3434'
-        resource '/*', credentials: true, headers: :any, methods: [
+        resource '*', headers: :any, methods: [
           :get, :post, :options, :delete, :patch, :put
         ]
       end
-      allow do
-       origins 'localhost:3435'
-       resource '/*', credentials: true, headers: :any, methods: [
-         :get, :post, :options, :delete, :patch, :put
-       ]
-     end
     end
   end
 end
