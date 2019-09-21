@@ -1,0 +1,13 @@
+
+	<div class="alert alert-info" class="text-center"  role="alert">
+				<%= flash[:notice]%>
+	</div>
+	<div class=" col-offset-6 centered">	
+		<h2>Upload your file</h2> 
+				<%= form_tag import_contacts_path, multipart: true do %>
+				<%= file_field_tag :file %> <br/>
+				<br/>
+				<%= submit_tag "Import CSV", class: 'btn btn-primary mb-2' %>
+				<% end %> 
+		</div> 
+	</div>

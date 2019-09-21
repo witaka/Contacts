@@ -2,6 +2,7 @@ class ContactSerializer < ActiveModel::Serializer
   has_many :phones
 
   attributes(
+    :id,
     :first_name,
     :last_name,
     :email,
@@ -19,6 +20,6 @@ end
 
 class PhonrSerializer < ActiveModel::Serializer
   
-  attributes :number, :title
+  attributes :id, :number, :title
   
 end
